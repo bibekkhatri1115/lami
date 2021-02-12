@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "582225701316",
+    "project_id": "lami-e4efb",
+    "storage_bucket": "lami-e4efb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582225701316:android:e7e57a1164f399c2ef9c91",
+        "android_client_info": {
+          "package_name": "com.example.Lami"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582225701316-ncg797cnumtg9f9si3qkaqnctbujud59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.Lami",
+            "certificate_hash": "19d34855db93128dbb5db9e5daf824f22508938f"
+          }
+        },
+        {
+          "client_id": "582225701316-nh1vncguhrm58e3l2dpeoqgbfn9lntn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7zgq-ArPHmNYYdZK2RkNFcXFktVuc2bQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582225701316-nh1vncguhrm58e3l2dpeoqgbfn9lntn5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

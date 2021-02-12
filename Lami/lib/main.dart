@@ -1,8 +1,6 @@
 import 'dart:io';
 
-import 'package:Lami/screens/login/login.dart';
 import 'package:Lami/screens/splashscreem/splashscreen.dart';
-// import 'package:Lami/screens/slides/slider.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -1,8 +1,7 @@
 import 'package:Lami/constants.dart';
-import 'package:Lami/dio_config.dart';
+import 'package:Lami/screens/chat/chat_home.dart';
 import 'package:Lami/screens/login/components/background.dart';
 import 'package:Lami/screens/login/components/text_field.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class SignInRegister extends StatefulWidget {
@@ -210,7 +209,12 @@ class _SignInRegisterState extends State<SignInRegister> {
                                   ),
                                 ),
                               ),
-                              onTap: () async {},
+                              onTap: () {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            ChatHome()));
+                              },
                             ),
                             SizedBox(
                               height: 20.0,
