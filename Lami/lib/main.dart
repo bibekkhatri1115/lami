@@ -1,4 +1,6 @@
 // import 'package:Lami/constants.dart';
+import 'package:Lami/constants.dart';
+import 'package:Lami/data/slider_data.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,15 +15,53 @@ class MyApp extends StatelessWidget {
       title: 'Lami',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
-        primaryColor: Colors.red[400],
       ),
       debugShowCheckedModeBanner: false,
-      home: Background(),
+      home: SlidingScreen(),
     );
   }
 }
 
-class Background extends StatelessWidget {
+class SlidingScreen extends StatefulWidget {
+  @override
+  _SlidingScreenState createState() => _SlidingScreenState();
+}
+
+class _SlidingScreenState extends State<SlidingScreen> {
+  List<SliderData> slides = new List<SliderData>();
+  int currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    slides = getSlides();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageView.builder(
+          itemCount: slides.length,
+          onPageChanged: (val) {
+            setState(() {
+              currentIndex = val;
+            });
+          },
+          itemBuilder: (context, index) {
+            return SliderTiles(
+              title: slides[index].title,
+              imagePath: slides[index].imagePath,
+              desc: slides[index].desc,
+            );
+          }),
+    );
+  }
+}
+
+class SliderBackground extends StatelessWidget {
+  final Widget child;
+  SliderBackground({this.child});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,9 +70,25 @@ class Background extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Positioned(
-                top: 0,
-                left: 0,
-                child: Image.asset('assets/images/log-circle.png'))
+              top: 0,
+              left: 0,
+              child: Image.asset(
+                'assets/images/splashscreen_top.png',
+                width: 250.0,
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              child: Image.asset(
+                'assets/images/welcomebackground.png',
+                width: 420.0,
+              ),
+            ),
+            Positioned(
+              top: 80.0,
+              child: child,
+            ),
           ],
         ),
       ),
@@ -40,40 +96,85 @@ class Background extends StatelessWidget {
   }
 }
 
-class SliderTile extends StatefulWidget {
-  @override
-  _SliderTileState createState() => _SliderTileState();
-}
-
-class _SliderTileState extends State<SliderTile> {
+class SliderTiles extends StatelessWidget {
+  final String imagePath, title, desc;
+  SliderTiles({this.imagePath, this.title, this.desc});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              Text(
-                'Find Your Match',
-                style: TextStyle(
-                    color: Colors.red[400],
+    return Container(
+      padding: EdgeInsets.all(10.0),
+      child: Column(
+        children: [
+          Container(
+            width: 350.0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "Skip",
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    color: lamiPrimaryColor,
+                    fontSize: 16.0,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20.0),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              Image.asset('assets/images/home1.png'),
-              SizedBox(
-                height: 20.0,
-              ),
-              Text(
-                  'With a lot of people to choose from, have a date with your feeling'),
-              pageIndexIndicator(true)
-            ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+          Text(
+            title,
+            style: TextStyle(
+                color: lamiPrimaryColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 20.0),
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          Image.asset(
+            imagePath,
+            height: 380.0,
+          ),
+          Container(
+            width: 380.0,
+            child: Text(
+              desc,
+              style: TextStyle(),
+            ),
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          pageIndexIndicator(true),
+          SizedBox(
+            height: 10.0,
+          ),
+          Container(
+            width: 180.0,
+            height: 50.0,
+            decoration: BoxDecoration(
+              color: lamiPrimaryColor,
+              borderRadius: BorderRadius.circular(20.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.red[200],
+                  blurRadius: 4,
+                  offset: Offset(4, 8), // Shadow position
+                ),
+              ],
+            ),
+            child: Center(
+              child: Text(
+                "Next",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -82,10 +183,11 @@ class _SliderTileState extends State<SliderTile> {
 Widget pageIndexIndicator(bool isCurrentPage) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 2.0),
-    height: isCurrentPage ? 10.0 : 6.0,
-    width: isCurrentPage ? 10.0 : 6.0,
+    height: isCurrentPage ? 20.0 : 16.0,
+    width: isCurrentPage ? 20.0 : 16.0,
     decoration: BoxDecoration(
-      color: isCurrentPage ? Colors.grey : Colors.grey[300],
+      color: isCurrentPage ? lamiPrimaryColor : Color(0x00000000),
+      border: Border.all(color: lamiPrimaryColor),
       borderRadius: BorderRadius.circular(12),
     ),
   );
