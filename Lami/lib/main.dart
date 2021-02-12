@@ -54,6 +54,54 @@ class _SlidingScreenState extends State<SlidingScreen> {
               desc: slides[index].desc,
             );
           }),
+      bottomSheet: Container(
+        alignment: Alignment.center,
+        height: 120.0,
+        color: Colors.white,
+        child: Column(
+          children: [
+            Container(
+              width: 60.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  for (int i = 0; i < slides.length; i++)
+                    currentIndex == i
+                        ? pageIndexIndicator(true)
+                        : pageIndexIndicator(false)
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Container(
+              width: 180.0,
+              height: 50.0,
+              decoration: BoxDecoration(
+                color: lamiPrimaryColor,
+                borderRadius: BorderRadius.circular(20.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.red[200],
+                    blurRadius: 4,
+                    offset: Offset(4, 8), // Shadow position
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  currentIndex == slides.length - 1 ? "Continue" : "Next",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -102,7 +150,7 @@ class SliderTiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10.0),
+      padding: EdgeInsets.only(top: 60.0),
       child: Column(
         children: [
           Container(
@@ -141,37 +189,6 @@ class SliderTiles extends StatelessWidget {
             child: Text(
               desc,
               style: TextStyle(),
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          pageIndexIndicator(true),
-          SizedBox(
-            height: 10.0,
-          ),
-          Container(
-            width: 180.0,
-            height: 50.0,
-            decoration: BoxDecoration(
-              color: lamiPrimaryColor,
-              borderRadius: BorderRadius.circular(20.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.red[200],
-                  blurRadius: 4,
-                  offset: Offset(4, 8), // Shadow position
-                ),
-              ],
-            ),
-            child: Center(
-              child: Text(
-                "Next",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                ),
-              ),
             ),
           ),
         ],
