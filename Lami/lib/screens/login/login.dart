@@ -1,6 +1,8 @@
 import 'package:Lami/constants.dart';
+import 'package:Lami/dio_config.dart';
 import 'package:Lami/screens/login/components/background.dart';
 import 'package:Lami/screens/login/components/text_field.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class SignInRegister extends StatefulWidget {
@@ -14,6 +16,12 @@ class _SignInRegisterState extends State<SignInRegister> {
   int prefferedGender = 0;
   bool passwordVisible = false;
   bool confirmPasswordVisible = false;
+
+  TextEditingController emailLoginEditingController =
+      new TextEditingController();
+  TextEditingController passwordLoginEditingController =
+      new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -123,6 +131,7 @@ class _SignInRegisterState extends State<SignInRegister> {
                           children: [
                             TextFieldContainer(
                               child: TextFormField(
+                                controller: emailLoginEditingController,
                                 decoration: InputDecoration(
                                   hintText: 'Email',
                                   hintStyle: TextStyle(color: lamiPrimaryColor),
@@ -141,6 +150,7 @@ class _SignInRegisterState extends State<SignInRegister> {
                             ),
                             TextFieldContainer(
                               child: TextFormField(
+                                controller: passwordLoginEditingController,
                                 decoration: InputDecoration(
                                   hintText: 'Password',
                                   hintStyle: TextStyle(color: lamiPrimaryColor),
@@ -185,19 +195,22 @@ class _SignInRegisterState extends State<SignInRegister> {
                             SizedBox(
                               height: 20.0,
                             ),
-                            Container(
-                              height: 40.0,
-                              width: 240.0,
-                              decoration: BoxDecoration(
-                                color: lamiPrimaryColor,
-                                borderRadius: BorderRadius.circular(50.0),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Login',
-                                  style: TextStyle(color: Colors.white),
+                            GestureDetector(
+                              child: Container(
+                                height: 40.0,
+                                width: 240.0,
+                                decoration: BoxDecoration(
+                                  color: lamiPrimaryColor,
+                                  borderRadius: BorderRadius.circular(50.0),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Login',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
+                              onTap: () async {},
                             ),
                             SizedBox(
                               height: 20.0,

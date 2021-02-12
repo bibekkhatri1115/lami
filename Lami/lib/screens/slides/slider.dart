@@ -1,6 +1,7 @@
 import 'package:Lami/constants.dart';
 import 'package:Lami/data/slider_data.dart';
 import 'package:Lami/screens/components/page_index_indicator.dart';
+import 'package:Lami/screens/login/login.dart';
 import 'package:flutter/material.dart';
 
 class SlidingScreen extends StatefulWidget {
@@ -75,9 +76,16 @@ class _SlidingScreenState extends State<SlidingScreen> {
               child: Center(
                 child: GestureDetector(
                   onTap: () {
-                    pageController.animateToPage(currentIndex + 1,
-                        duration: Duration(milliseconds: 400),
-                        curve: Curves.linearToEaseOut);
+                    currentIndex != slides.length - 1
+                        ? pageController.animateToPage(
+                            currentIndex + 1,
+                            duration: Duration(milliseconds: 400),
+                            curve: Curves.linearToEaseOut,
+                          )
+                        : Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    SignInRegister()));
                   },
                   child: Text(
                     currentIndex == slides.length - 1
