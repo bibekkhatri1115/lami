@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:Lami/screens/interest/interest.dart';
 import 'package:Lami/screens/splashscreem/splashscreen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,8 +19,8 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,
-      // home: SlidingScreen(),
-      home: SplashScreen(),
+      home: InterestAdd(),
+      // home: SplashScreen(),
     );
   }
 }

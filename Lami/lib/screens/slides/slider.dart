@@ -59,34 +59,32 @@ class _SlidingScreenState extends State<SlidingScreen> {
             SizedBox(
               height: 10.0,
             ),
-            Container(
-              width: 180.0,
-              height: 50.0,
-              decoration: BoxDecoration(
-                color: lamiPrimaryColor,
-                borderRadius: BorderRadius.circular(20.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.red[200],
-                    blurRadius: 4,
-                    offset: Offset(4, 8), // Shadow position
-                  ),
-                ],
-              ),
-              child: Center(
-                child: GestureDetector(
-                  onTap: () {
-                    currentIndex != slides.length - 1
-                        ? pageController.animateToPage(
-                            currentIndex + 1,
-                            duration: Duration(milliseconds: 400),
-                            curve: Curves.linearToEaseOut,
-                          )
-                        : Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    SignInRegister()));
-                  },
+            GestureDetector(
+              onTap: () {
+                currentIndex != slides.length - 1
+                    ? pageController.animateToPage(
+                        currentIndex + 1,
+                        duration: Duration(milliseconds: 400),
+                        curve: Curves.linearToEaseOut,
+                      )
+                    : Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (BuildContext context) => SignInRegister()));
+              },
+              child: Container(
+                width: 180.0,
+                height: 50.0,
+                decoration: BoxDecoration(
+                  color: lamiPrimaryColor,
+                  borderRadius: BorderRadius.circular(20.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.red[200],
+                      blurRadius: 4,
+                      offset: Offset(4, 8), // Shadow position
+                    ),
+                  ],
+                ),
+                child: Center(
                   child: Text(
                     currentIndex == slides.length - 1
                         ? "Connect with us"

@@ -28,8 +28,15 @@ class Splash extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         decoration: new BoxDecoration(color: Colors.white),
-        child: new Center(
-          child: image,
+        child: Stack(
+          children: [
+            new Center(
+              child: image,
+            ),
+            Positioned(
+                bottom: 0,
+                child: Image.asset(assetImagePath + 'welcomebackground.png')),
+          ],
         ),
       ), //
     );

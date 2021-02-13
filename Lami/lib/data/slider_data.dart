@@ -27,3 +27,34 @@ List<SliderData> getSlides() {
 
   return slides;
 }
+
+class Interest {
+  String interest;
+  Interest({this.interest});
+}
+
+class ProfileSliderData {
+  String imagePath;
+  String name;
+  String age;
+  List<Interest> interest = new List<Interest>();
+
+  ProfileSliderData({this.imagePath, this.name, this.age, this.interest});
+}
+
+List<Interest> interests = [
+  Interest(interest: 'Movie'),
+  Interest(interest: 'Sports'),
+];
+List<ProfileSliderData> profiles = [
+  new ProfileSliderData(
+      imagePath: assetImagePath + 'profile/Profile1.png',
+      age: '20',
+      name: 'Akshay Kumar',
+      interest: interests),
+  new ProfileSliderData(
+      imagePath: assetImagePath + 'profile/Profile1.png',
+      age: '20',
+      name: 'Akshay Kumar',
+      interest: interests),
+];

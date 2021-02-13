@@ -1,6 +1,6 @@
 import 'package:Lami/constants.dart';
 import 'package:Lami/screens/chat/stranger_chat_intro.dart';
-import 'package:Lami/screens/profile_slider.dart';
+import 'package:Lami/screens/slides/profile_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fab_dialer/flutter_fab_dialer.dart';
 
@@ -12,7 +12,6 @@ class ChatHome extends StatefulWidget {
 class _ChatHomeState extends State<ChatHome> {
   @override
   Widget build(BuildContext context) {
-    ImageProvider img = new AssetImage(assetImagePath + 'panda1.png');
     var miniMenu = [
       new FabMiniMenuItem.withText(
           new Icon(Icons.person_add), lamiPrimaryColor, 4.0, "Button menu", () {
